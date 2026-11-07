@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Governance invariant review before stopping",
+      "description": "When the agent finishes a turn, ask it to review changed engine and API files against .kiro/steering/10-governance-invariants.md. Disabled by default because agent-prompt hooks consume credits; enable it while working on src/engine or server.",
+      "trigger": "Stop",
+      "action": {
+        "type": "agent",
+        "prompt": "Run git diff --name-only. For every changed file under src/engine, server or api, check it against every invariant in .kiro/steering/10-governance-invariants.md. Report any invariant that could now be violated, with the file and line, and name the test that should catch it. If none, say so in one line."
+      },
+      "enabled": false
+    }
+  ]
+}

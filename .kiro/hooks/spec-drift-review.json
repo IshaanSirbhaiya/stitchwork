@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Spec drift review",
+      "description": "When the agent edits a requirements.md inside .kiro/specs, ask the agent to check the sibling design.md and tasks.md for drift. Agent prompt, so it consumes credits.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.kiro[/\\\\]specs[/\\\\].*requirements\\.md$",
+      "action": {
+        "type": "agent",
+        "prompt": "A requirements.md in .kiro/specs was just changed. Compare it with design.md and tasks.md in the same folder. List every acceptance criterion that has no design coverage or no task, and every task that cites a criterion number that no longer exists. Propose exact edits. Do not edit code. Follow .kiro/steering/00-standards.md."
+      },
+      "enabled": true
+    }
+  ]
+}

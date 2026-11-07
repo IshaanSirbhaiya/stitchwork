@@ -1,0 +1,7 @@
+# Static deploy of the UI only. The serverless API in api/ is Vercel-specific.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

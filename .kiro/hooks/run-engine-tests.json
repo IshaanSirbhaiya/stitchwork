@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Engine tests on engine edit",
+      "description": "After the agent saves any file under src/engine or server, run the engine and server test suites, then rebuild the bundled API in api/_lib and smoke-test it in plain Node so the deployed functions never drift from the source. A non-zero exit sends the failing output back to the agent. Shell command, so it costs no credits.",
+      "trigger": "PostFileSave",
+      "matcher": "(src[/\\\\]engine|server)[/\\\\].*\\.ts$",
+      "action": { "type": "command", "command": "npm run hook:engine --silent" },
+      "timeout": 180,
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Walnut stitches tests on stitch edit",
+      "description": "After the agent saves a file under stitch_walnut/, src/walnut/ or vendor/walnut/, run the pytest suite (which includes the vendored-bytes check, so any edit to the vendored Walnut engine fails at once) and the Walnut wiring tests. Needs a Python with pydantic and PyYAML: `python` on PATH, or STITCH_PYTHON (honoured by scripts/pytest.mjs). Shell command, so it costs no credits.",
+      "trigger": "PostFileSave",
+      "matcher": "(stitch_walnut|src[/\\\\]walnut|vendor[/\\\\]walnut)[/\\\\].*\\.(py|ts|txt|toml|sha256)$",
+      "action": { "type": "command", "command": "npm run hook:stitches --silent" },
+      "timeout": 180,
+      "enabled": true
+    }
+  ]
+}

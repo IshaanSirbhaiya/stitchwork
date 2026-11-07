@@ -1,0 +1,17 @@
+Walnut engine (vendored library)
+Copyright 2026 the Walnut project
+
+This directory contains an unmodified copy of part of the Walnut engine, licensed under the
+Apache License, Version 2.0 (see LICENSE in this directory). It is pre-existing work: it was
+written before Kiroween 2026 by the Walnut team, who also build Stitchwork, and is included here
+unchanged, as a library.
+
+Files included (13), byte-for-byte identical to the Walnut source; SHA-256 digests are in
+MANIFEST.sha256 and are checked by tests_py/test_vendor_unchanged.py:
+
+  packages/core/pyproject.toml
+  packages/core/databridge_core/*.py         provenance, value forms, sealed decision ledger
+  apps/gateway/databridge_gateway/llm.py     the grounding wall functions
+
+No file in this directory has been modified. Stitchwork's own code (MIT, see the repository
+LICENSE) calls these files through stitch_walnut/walnut.py.

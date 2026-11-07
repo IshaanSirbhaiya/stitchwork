@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vercel/
+.netlify/
+*.log
+.env
+.env.*
+!.env.example
+coverage/
+var/
+__pycache__/
+.pytest_cache/

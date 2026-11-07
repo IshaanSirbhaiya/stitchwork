@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Leak guard after every spec task",
+      "description": "After each spec task completes, run the permission-gate and restricted-looks-like-nonexistent property tests. If any fails, the agent is told before the next task in the wave starts. Shell command, no credits.",
+      "trigger": "PostTaskExec",
+      "action": { "type": "command", "command": "npm run test:leaks --silent" },
+      "timeout": 180,
+      "enabled": true
+    }
+  ]
+}

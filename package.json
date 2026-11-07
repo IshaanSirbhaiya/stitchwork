@@ -1,0 +1,45 @@
+{
+  "name": "stitchwork",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Stitchwork: a Frankenstein answer layer that sews wiki pages, tickets, chat exports and spreadsheets into one permission-aware, cited and auditable answer, held together by the vendored Walnut engine.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build && npm run build:api",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:engine": "vitest run tests/engine",
+    "test:leaks": "vitest run tests/engine/uniform.property.test.ts tests/engine/gates.test.ts tests/server/boundary.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check:dashes": "node scripts/check-dashes.mjs",
+    "build:api": "vite build --config vite.api.config.ts",
+    "smoke:api": "node scripts/smoke-api.mjs",
+    "walnut": "python -m stitch_walnut --ephemeral-key",
+    "test:walnut": "vitest run tests/walnut",
+    "test:py": "node scripts/pytest.mjs",
+    "hook:engine": "vitest run tests/engine tests/server --reporter=dot && npm run build:api --silent && npm run smoke:api --silent",
+    "hook:stitches": "node scripts/pytest.mjs && vitest run tests/walnut --reporter=dot"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "fast-check": "^4.10.2",
+    "jsdom": "^29.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  }
+}

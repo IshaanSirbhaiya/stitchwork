@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Dash check on Markdown save",
+      "description": "After the agent saves a Markdown file, fail if it contains an em dash or en dash (steering rule in 00-standards.md). Prints path:line:col for each hit so the agent can fix it. Shell command, no credits.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.md$",
+      "action": { "type": "command", "command": "node scripts/check-dashes.mjs" },
+      "timeout": 30,
+      "enabled": true
+    }
+  ]
+}
